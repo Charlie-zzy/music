@@ -12,20 +12,27 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/zdhxiong/mdui@0.4.3/dist/css/mdui.min.css" type="text/css">
 </head>
 <style>
+#fLeft{
+    position: relative;
+    float: left;
+    overflow: hidden;
+}
+#fRight{
+    position: relative;
+    overflow: hidden;
+}
+
 #content-left{width: fit-content;}
 #songlist{padding-bottom: 50px;}
 #content-right{
     width: fit-content;
     height: 100%;
-    position: fixed;
-    top: 0;
-    right: 0;
-    overflow-x: scroll;
-    overflow-y: scroll;
+    position: absolute;
+    top:0;bottom:0;left:0;right:0;
+
+    overflow:scroll;
 }
-#lrclist{
-    font-size: 20px;
-}
+#lrclist{font-size: 20px;}
 #lrclist .mdui-list-item{text-align: center;}
 li.on{
     border-left: solid;
@@ -51,12 +58,16 @@ li.on .mdui-list-item-content{
 #loading{z-index:10000000;position: fixed;top:0;bottom:0;left:0;right:0;margin: auto;height: 50px;width: 50px;}
 </style>
 <body class="mdui-bottom-nav-fixed mdui-appbar-inset">
-    <div id="content-left" class="mdui-appbar-inset">
-        <ul id="songlist" class="mdui-list"></ul>
+    <div id="fLeft">
+        <div id="content-left" class="mdui-appbar-inset">
+            <ul id="songlist" class="mdui-list"></ul>
+        </div>
     </div>
-    <div id='content-right'>
-        <ul id="lrclist" class='mdui-list'>
-        </ul>
+    <div id="fRight">
+        <div id='content-right'>
+            <ul id="lrclist" class='mdui-list'>
+            </ul>
+        </div>
     </div>
     <div class="mdui-drawer mdui-drawer-close mdui-color-white mdui-drawer-full-height" id="drawer">
         <ul class="mdui-list">
@@ -185,7 +196,7 @@ li.on .mdui-list-item-content{
             <input id='input_email' class="mdui-textfield-input" type="text">
         </div>
         <div class="mdui-textfield mdui-textfield-floating-label">
-            <label class="mdui-textfield-label">Password</label>
+            <label for='input_email_passwd' class="mdui-textfield-label">Password</label>
             <input id='input_email_passwd' class="mdui-textfield-input" type="password">
         </div>
         <button class="mdui-btn mdui-btn-raised" onclick="login_email()">登录</button>
@@ -196,7 +207,7 @@ li.on .mdui-list-item-content{
             <input id='input_phone' class="mdui-textfield-input" type="tel">
         </div>
         <div class="mdui-textfield mdui-textfield-floating-label">
-            <label class="mdui-textfield-label">Password</label>
+            <label for='input_phone_passwd' class="mdui-textfield-label">Password</label>
             <input id='input_phone_passwd' class="mdui-textfield-input" type="password">
         </div>
         <button class="mdui-btn mdui-btn-raised" onclick="login_phone()">登录</button>

@@ -1,3 +1,7 @@
+var fLeft=document.getElementById("fLeft"),
+    fRight=document.getElementById("fRight");
+fLeft.style.height=fRight.style.height=window.innerHeight+'px';
+
 var api,list=[],url=[],len=0;
 var expres;
 var lrcTime=[],
