@@ -1,7 +1,17 @@
 var fLeft=document.getElementById("fLeft"),
-    fRight=document.getElementById("fRight");
+    fRight=document.getElementById("fRight"),
+    slid=document.getElementById("slid");
 fLeft.style.height=fRight.style.height=window.innerHeight+'px';
-
+slide.onmousedown=function(e){
+    slide.style.opacity=0.8;
+    document.onmousemove=function(e){
+        fLeft.style.width=e.clientX-(drawer.state!="closed")*document.getElementById("drawer").offsetWidth+'px';
+    }    
+}
+document.onmouseup=function(e){
+    document.onmousemove=null;
+    slide.style.opacity=0.1;
+}
 var api,list=[],url=[],len=0;
 var expres;
 var lrcTime=[],
