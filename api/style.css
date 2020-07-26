@@ -1,5 +1,6 @@
 
 #fLeft{
+    width: 50%;
     position: relative;
     float: left;
     overflow: hidden;
@@ -21,7 +22,13 @@
     opacity:0.1;
 }
 #slide:hover{opacity:0.8 !important;}
-#content-left{width: fit-content;}
+#content-left{
+    height: 100%;
+    position:absolute;
+    top:0;bottom:0;left:0;right:0;
+    
+    overflow:scroll;
+}
 #songlist{padding-bottom: 50px;}
 #content-right{
     height: 100%;
