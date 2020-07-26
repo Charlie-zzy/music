@@ -10,53 +10,8 @@
     <link rel="shortcut icon" href="../icon.svg">
     <link rel="bookmark" href="../icon.svg" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/zdhxiong/mdui@0.4.3/dist/css/mdui.min.css" type="text/css">
+    <link rel="stylesheet" href="style.css" type="text/css">
 </head>
-<style>
-#fLeft{
-    position: relative;
-    float: left;
-    overflow: hidden;
-}
-#fRight{
-    position: relative;
-    overflow: hidden;
-}
-
-#content-left{width: fit-content;}
-#songlist{padding-bottom: 50px;}
-#content-right{
-    width: fit-content;
-    height: 100%;
-    position: absolute;
-    top:0;bottom:0;left:0;right:0;
-
-    overflow:scroll;
-}
-#lrclist{font-size: 20px;}
-#lrclist .mdui-list-item{text-align: center;}
-li.on{
-    border-left: solid;
-    background-color: #f3f3f3;
-}
-li.on .mdui-list-item-content{
-    font-weight:bold;
-}
-#notice{
-    position: fixed;
-    top:0;
-    left: 0;
-    right:0;
-    width: fit-content;
-    margin: auto;
-    font-size: 20px;
-    border-radius: 2px;
-    background-color: rgba(0, 0, 0, 0.603);
-    color: #fff;
-    padding: 10px;
-    z-index: 1000000;
-}
-#loading{z-index:10000000;position: fixed;top:0;bottom:0;left:0;right:0;margin: auto;height: 50px;width: 50px;}
-</style>
 <body class="mdui-bottom-nav-fixed mdui-appbar-inset">
     <div id="fLeft">
         <div id="content-left" class="mdui-appbar-inset">

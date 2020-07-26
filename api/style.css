@@ -1,18 +1,25 @@
 
+#fLeft{
+    position: relative;
+    float: left;
+    overflow: hidden;
+}
+#fRight{
+    position: relative;
+    overflow: hidden;
+}
+
 #content-left{width: fit-content;}
 #songlist{padding-bottom: 50px;}
 #content-right{
     width: fit-content;
     height: 100%;
-    position: fixed;
-    top: 0;
-    right: 0;
-    overflow-x: scroll;
-    overflow-y: scroll;
+    position: absolute;
+    top:0;bottom:0;left:0;right:0;
+
+    overflow:scroll;
 }
-#lrclist{
-    font-size: 20px;
-}
+#lrclist{font-size: 20px;}
 #lrclist .mdui-list-item{text-align: center;}
 li.on{
     border-left: solid;
