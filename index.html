@@ -1,75 +1,77 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="在线歌单下载器">
+    <meta name='description' itemprop="description" content="在线歌单下载器,支持网易云、QQ、酷狗、虾米、百度">
     <title>在线歌单下载器</title>
-    <link rel="shortcut icon" href="icon.svg">
-    <link rel="bookmark" href="icon.svg" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/zdhxiong/mdui/dist/css/mdui.min.css" type="text/css">
-    <script async src="https://cdn.jsdelivr.net/gh/zdhxiong/mdui/dist/js/mdui.min.js"></script>
+    <link rel="shortcut icon" href="../icon.svg">
+    <link rel="bookmark" href="../icon.svg" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/zdhxiong/mdui@0.4.3/dist/css/mdui.min.css" type="text/css">
+    <script async src="https://cdn.jsdelivr.net/gh/zdhxiong/mdui@0.4.3/dist/js/mdui.min.js"></script>
+    <link rel="stylesheet" href="css.css" type="text/css">
+    <script async src='bundle.js'></script>
 </head>
-<style>
-.mdui-card{margin: 20px;}
-a{color:#0099ff;text-decoration: none;}
-</style>
-<body>
-    <div class="mdui-container">
-        <div class="mdui-card">
-            <div class="mdui-card-primary">
-                <div class="mdui-card-primary-title">介绍</div>
-                <div class="mdui-card-primary-subtitle">功能与特点</div>
+<body class="mdui-theme-accent-blue mdui-appbar-with-toolbar padding-top">
+    <div id="content-left">
+       <div id='top_bar' class='mdui-appbar mdui-shadow-2 mdui-appbar-fixed'>
+            <div class='mdui-toolbar mdui-color-white'>
+               <select id="playlisttyp" class="mdui-select">
+                    <option value="netease">网易云音乐</option>
+                    <option value="tencent">QQ音乐</option>
+                    <option value="xiami">虾米音乐</option>
+                    <option value="kugou">酷狗音乐</option>
+                    <option value="baidu">百度音乐</option>
+                </select>
+                <div class='mdui-textfield'>
+                    <input id='playlistid' class='mdui-textfield-input' placeholder='请输入歌单id'>
+                </div>
+                <button class="mdui-btn mdui-color-blue mdui-text-color-white mdui-btn-raised mdui-ripple" onclick="genlist()">加载</button>
             </div>
-            <div class="mdui-card-content mdui-typo">
-                <p>支持网易云音乐,QQ音乐,酷狗音乐,虾米音乐,百度音乐</p>
-                <p>请使用新版本的 <code>Chrome</code>或<code>Firefox</code></p>
-                <p>可以在线使用,也可以下载后在本地使用</p>
-                <p>特点:</p>
-                <ol>
-                    <li>简洁美观</li>
-                    <li>支持在线下载与导出下载脚本</li>
-                    <li>支持试听与查看歌词，歌词随时间自动滚动</li>
-                    <li>纯javascript编写</li>
-                </ol>
-                <a href="https://github.com/zcmimi/music-playlist-downloader"
-                    mdui-tooltip="{content: '好用就点个star吧'}">在github上查看</a>
-            </div>
-        </div>
-
-
-        <div class="mdui-card">
-            <div class="mdui-card-primary">
-                <a href='./meting/index.html' class="mdui-card-primary-title">meting</a>
-                <div class="mdui-card-primary-subtitle">使用meting,官方提供api</div>
-            </div>
-            <div class="mdui-card-content mdui-typo">
-                <p>使用<a href="https://github.com/metowolf/Meting">meting</a>,支持网易云、QQ、酷狗、虾米、百度音乐等</p>
-                <p>支持下载能试听的歌曲(能听就可以下载,包含vip下载但可以试听,但不包含vip)</p>
-                <a href="./meting/index.html">进入</a>
-            </div>
-        </div>
-
-        <div class="mdui-card">
-            <div class="mdui-card-primary">
-                <a href='./api/index.html' class="mdui-card-primary-title">NeteaseCloudMusicApi</a>
-                <div class="mdui-card-primary-subtitle">使用NeteaseCloudMusicApi,暂无官方提供api</div>
-            </div>
-            <div class="mdui-card-content mdui-typo">
-                <p>使用<a href="https://github.com/Binaryify/NeteaseCloudMusicApi">NeteaseCloudMusicApi</a>,支持网易云音乐各种操作(开发中)</p>
-                <p><strong>强烈建议使用本地搭建api,以防被他人劫持密码</strong></p>
-                <p>自建api:</p>
-                <ul>
-                    <li>搭建于我的服务器:<code>https://netease.music.zcmimi.top</code></li>
-                    <li>白嫖now.sh:<code>https://netease-cloudmusic-api.now.sh</code></li>
-                    <li>白嫖cloudflare workers:<code>https://netease-cloudmusic-api.now.sh</code></li>
-                    <li>白嫖leancloud国际版: <code>https://cloudmusicapi.avosapps.us</code></p></li>
+            <div class='mdui-toolbar mdui-color-white'>
+                <select id="download_name" class="mdui-select">
+                    <option value=1>歌曲名-歌手</option>
+                    <option value=0>歌手-歌曲名</option>
+                    <option value=2>歌曲名</option>
+                </select>
+                <label class="mdui-checkbox">
+                    <input id="download_lrc" type="checkbox" checked onclick="download_lrc^=1;">
+                    <i class="mdui-checkbox-icon"></i>下载歌词
+                </label>
+                <a mdui-menu="{target: '#export_menu'}" title="导出下载脚本,推荐">
+                    <i class="mdui-icon material-icons">subdirectory_arrow_right</i>
+                </a>
+                <ul class="mdui-menu" id="export_menu">
+                    <li class="mdui-menu-item">
+                        <a href="javascript:expt('wget');">使用wget</a>
+                    </li>
+                    <li class="mdui-menu-item">
+                        <a href="javascript:expt('certutil');">使用certutil</a>
+                    </li>
                 </ul>
-                <p>额外支持登录(如果是vip用户就可以下载vip歌曲了)</p>
-                <a href="./api/index.html">进入</a>
+                <button onclick="download()" title="占用资源,有可能会卡死" class="mdui-btn mdui-btn-icon">
+                    <i class="mdui-icon material-icons">file_download</i>
+                </button>
+                <button onclick="selectrev()" title='反选' class="mdui-btn mdui-btn-icon">
+                    <i class="mdui-icon material-icons">exposure</i>
+                </a>
             </div>
-        </div>
+           <div class='mdui-toolbar mdui-color-white'>
+               <button onclick="pre()" class="mdui-btn mdui-btn-icon"><i class='mdui-icon material-icons'>skip_previous</i></button>
+               <button onclick="order_toggle()" class="mdui-btn mdui-btn-icon" id='order_toggle'><i class="mdui-icon material-icons">shuffle</i></button>
+               <button onclick="nxt()" class="mdui-btn mdui-btn-icon"><i class='mdui-icon material-icons'>skip_next</i></button>
+               <audio id="player" src="" controls="controls" autoplay="autoplay"></audio>
+           </div>
+           <div class="mdui-progress" id='progressbar'>
+               <div class="mdui-progress-determinate" id='progressbar_' style="width: 0%;"></div>
+           </div>
+       </div>
+       <ul id="songlist" class="mdui-list">
+       </ul>
+    </div>
+    <div id='content-right'>
+        <ul id="lrclist" class='mdui-list'></ul>
     </div>
 </body>
 </html>
