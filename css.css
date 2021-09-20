@@ -1,17 +1,5 @@
-#top_bar{
-    width: 50%;
-}
-
-#content-left{
-    width: 50%;
-    height: 100%;
-    float: left;
-    clear: left;
-    position: fixed;
-    top: 0;
-    left: 0;
-    overflow-x: scroll;
-    overflow-y: scroll;
+.mdui-card{
+    margin: 20px;
 }
 
 #player{
@@ -20,18 +8,6 @@
 
 #songlist{
     padding-top: 192px;
-}
-
-#content-right{
-    width: 50%;
-    height: 100%;
-    float: right;
-    clear: right;
-    position: fixed;
-    top: 0;
-    right: 0;
-    overflow-x: scroll;
-    overflow-y: scroll;
 }
 
 #lrclist{
