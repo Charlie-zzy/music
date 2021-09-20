@@ -1,5 +1,6 @@
-.mdui-row{
+.mdui-card{
     margin: 20px;
+    
 }
 .mdui-card-primary{
   background: rgba(0,0,0,.4);
@@ -9,7 +10,7 @@
 }
 
 #songlist{
-    padding-top: 192px;
+    height: 80%;
 }
 
 #lrclist{

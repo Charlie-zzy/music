@@ -223,6 +223,7 @@ function genlist() {
     mdui.snackbar({ message: '加载中', position: 'left-bottom' });
     get();
     songlist = document.getElementById('songlist');
+    songlist.innerHTML="";
     for (i in list) {
         var li = document.createElement('li'),
             avatar = document.createElement('div'),
@@ -257,7 +258,6 @@ function genlist() {
         label.appendChild(chkbox), label.appendChild(chkicon);
         li.appendChild(avatar), li.appendChild(a), li.appendChild(label);
         issl[i] = 0;
-        songlist.innerHTML="";
         songlist.appendChild(li);
     }
     songlist = songlist.children;

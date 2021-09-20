@@ -15,16 +15,16 @@
 </head>
 
 <body class="mdui-theme-accent-blue">
-  <div class="mdui-container">
+  <div class="mdui-container mdui-center">
     <div class="mdui-row">
-      <div class="mdui-col-xs-4">
-        <div class="mdui-card">
+      <div class="mdui-col-sm-9 mdui-col-md-6">
+        <div class="mdui-card mdui-center">
           <div class="mdui-card-media">
             <img src="https://cdn.jsdelivr.net/gh/Charlie-zzy/imgCDN/awa.png" />
             <div class="mdui-card-media-covered">
               <div class="mdui-card-primary">
                 <div class="mdui-card-primary-title">在线歌单下载器</div>
-                <div class="mdui-card-primary-subtitle">Made by zcmimi&Charlie</div>
+                <div class="mdui-card-primary-subtitle">Made by zcmimi & charlie</div>
               </div>
             </div>
 
@@ -35,39 +35,37 @@
 
               <input id='playlistid' class='mdui-textfield-input' placeholder="输入歌单ID">
             </div>
-
+             <select id="playlisttyp" class="mdui-select" mdui-select="{position: 'bottom'}">
+          <option value="netease">网易云音乐</option>
+          <option value="tencent">QQ音乐</option>
+          <option value="xiami">虾米音乐</option>
+          <option value="kugou">酷狗音乐</option>
+          <option value="baidu">百度音乐</option>
+        </select>
           </div>
-          <div class="mdui-card-actions mdui-toolbar"> <button onclick="download()" class="mdui-btn mdui-ripple mdui-color-blue mdui-text-color-white mdui-btn-raised"><i class="mdui-icon material-icons">file_download</i>下载</button>
-            <label class="mdui-checkbox">
-              <input id="download_lrc" type="checkbox" onclick="download_lrc^=1;">
-              <i class="mdui-checkbox-icon"></i>同时下载歌词文件
-            </label>
           </div>
         </div>
-      </div>
-      <div class="mdui-card">
+      <div class="mdui-card mdui-col-sm-9 mdui-col-md-4">
         <ul id="songlist" class="mdui-list">
           <div class="mdui-spinner mdui-center mdui-valign"></div>
         </ul>
       </div>
+      </div>
 
-    </div>
 
     <!--<div class="mdui-progress" id='progressbar'>-->
     <!--    <div class="mdui-progress-determinate" id='progressbar_' style="width: 0%;"></div>-->
     <!--</div>-->
 
     <div class="mdui-card">
-      <div class='mdui-card-content mdui-toolbar'>
+      <div class='mdui-card-content mdui-p-a-2'>
+         <button onclick="download()" class="mdui-btn mdui-ripple mdui-color-blue mdui-text-color-white mdui-btn-raised"><i class="mdui-icon material-icons">file_download</i>下载</button>
+            <label class="mdui-checkbox">
+              <input id="download_lrc" type="checkbox" onclick="download_lrc^=1;">
+              <i class="mdui-checkbox-icon"></i>同时下载歌词
+            </label>
 
-        <select id="playlisttyp" class="mdui-select" mdui-select="{position: 'bottom'}">
-          <option value="netease">网易云</option>
-          <option value="tencent">QQ音乐</option>
-          <option value="xiami">虾米音乐</option>
-          <option value="kugou">酷狗音乐</option>
-          <option value="baidu">百度音乐</option>
-        </select>
-        <select id="download_name" class="mdui-select">
+        <select id="download_name" class="mdui-select" mdui-select="{position: 'bottom'}">
           <option value=1>歌名-歌手</option>
           <option value=0>歌手-歌名</option>
           <option value=2>仅歌曲名</option>
@@ -92,7 +90,7 @@
           <button onclick="nxt()" class="mdui-btn mdui-btn-icon"><i class='mdui-icon material-icons'>skip_next</i></button>
       </div>
 
-      <audio id="player" src="" controls="controls" autoplay="autoplay"></audio>
+      <audio class="mdui-center" id="player" src="" controls="controls" autoplay="autoplay"></audio>
     </div>
   </div>
   </div>
