@@ -17,30 +17,34 @@
 
 <body class="mdui-theme-accent-blue">
     <div class="mdui-container">
-        <div class="mdui-container">
-            <div class="mdui-card">
-                <div class="mdui-card-primary">
-                    <div class="mdui-card-primary-title">在线歌单下载器</div>
-                    <div class="mdui-card-primary-subtitle">Charlie</div>
-                </div>
-                
-                <div class="mdui-card-content mdui-typo">
-                    <select id="playlisttyp" class="mdui-select">
-                        <option value="netease">网易云</option>
-                        <option value="tencent">QQ音乐</option>
-                        <option value="xiami">虾米音乐</option>
-                        <option value="kugou">酷狗音乐</option>
-                        <option value="baidu">百度音乐</option>
-                    </select>
-                    <div class='mdui-textfield'>
-                        <input id='playlistid' class='mdui-textfield-input' placeholder='请输入歌单id'>
-                    </div>
-                    <button class="mdui-btn mdui-color-blue mdui-text-color-white mdui-btn-raised mdui-ripple"
-                        onclick="genlist()">加载</button>
-                </div>
+
+        <div class="mdui-card">
+            <div class="mdui-card-primary">
+                <div class="mdui-card-primary-title">在线歌单下载器</div>
+                <div class="mdui-card-primary-subtitle">Charlie</div>
             </div>
+
+            <div class="mdui-card-content mdui-typo">
+                <select id="playlisttyp" class="mdui-select">
+                    <option value="netease">网易云</option>
+                    <option value="tencent">QQ音乐</option>
+                    <option value="xiami">虾米音乐</option>
+                    <option value="kugou">酷狗音乐</option>
+                    <option value="baidu">百度音乐</option>
+                </select>
+                <div class='mdui-textfield'>
+                    <input id='playlistid' class='mdui-textfield-input' placeholder='请输入歌单id'>
+                </div>
+                <button class="mdui-btn mdui-color-blue mdui-text-color-white mdui-btn-raised mdui-ripple"
+                    onclick="genlist()">加载</button>
+            </div>
+        </div>
+        <div class="mdui-card">
+            <ul id="songlist" class="mdui-list">
+            </ul>
+        </div>
     </div>
-    <div id="content-left">
+    <!-- <div id="content-left">
         <div id='top_bar' class='mdui-appbar mdui-shadow-2 mdui-appbar-fixed'>
 
             <div class='mdui-toolbar mdui-color-white'>
@@ -84,12 +88,11 @@
                 <div class="mdui-progress-determinate" id='progressbar_' style="width: 0%;"></div>
             </div>
         </div>
-        <ul id="songlist" class="mdui-list">
-        </ul>
+
     </div>
     <div id='content-right'>
         <ul id="lrclist" class='mdui-list'></ul>
-    </div>
+    </div> -->
 </body>
 
 </html>
