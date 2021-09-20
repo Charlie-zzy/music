@@ -223,7 +223,7 @@ function genlist() {
     mdui.snackbar({ message: '加载中', position: 'left-bottom' });
     get();
     songlist = document.getElementById('songlist');
-    songlist.innerHTML="";
+    songlist.innerHTML = "";
     for (i in list) {
         var li = document.createElement('li'),
             avatar = document.createElement('div'),
@@ -264,11 +264,9 @@ function genlist() {
     mdui.snackbar({ message: '加载完毕', position: 'left-bottom' });
 }
 
-function selectrev() {
+function selectall() {
     for (var i = 0; i < songlist.length; ++i) {
         var x = songlist[i].children[2].children[0];
-        if (issl[i]) x.checked = false;
-        else x.checked = 1;
-        issl[i] ^= 1;
+        x.checked = issl[i] = 1;
     }
 }

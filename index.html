@@ -1,100 +1,115 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="keywords" content="在线歌单下载器">
-  <meta name='description' itemprop="description" content="在线歌单下载器,支持网易云、QQ、酷狗、虾米、百度">
-  <title>在线歌单下载器</title>
-  <link rel="shortcut icon" href="../icon.svg">
-  <link rel="bookmark" href="../icon.svg" type="image/x-icon">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/zdhxiong/mdui@0.4.3/dist/css/mdui.min.css" type="text/css">
-  <script async src="https://cdn.jsdelivr.net/gh/zdhxiong/mdui@0.4.3/dist/js/mdui.min.js"></script>
-  <link rel="stylesheet" href="css.css" type="text/css">
-  <script async src='bundle.js'></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="在线歌单下载器">
+    <meta name='description' itemprop="description" content="在线歌单下载器,支持网易云、QQ、酷狗、虾米、百度">
+    <title>在线歌单下载器</title>
+    <link rel="shortcut icon" href="../icon.svg">
+    <link rel="bookmark" href="../icon.svg" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/zdhxiong/mdui@0.4.3/dist/css/mdui.min.css" type="text/css">
+    <script async src="https://cdn.jsdelivr.net/gh/zdhxiong/mdui@0.4.3/dist/js/mdui.min.js"></script>
+    <link rel="stylesheet" href="css.css" type="text/css">
+    <script async src='bundle.js'></script>
 </head>
 
 <body class="mdui-theme-accent-blue">
-  <div class="mdui-container mdui-center">
-    <div class="mdui-row">
-      <div class="mdui-col-sm-9 mdui-col-md-6">
-        <div class="mdui-card mdui-center">
-          <div class="mdui-card-media">
-            <img src="https://cdn.jsdelivr.net/gh/Charlie-zzy/imgCDN/awa.png" />
-            <div class="mdui-card-media-covered">
-              <div class="mdui-card-primary">
-                <div class="mdui-card-primary-title">在线歌单下载器</div>
-                <div class="mdui-card-primary-subtitle">Made by zcmimi & charlie</div>
-              </div>
-            </div>
+    <div class="mdui-container mdui-center">
+        <div class="mdui-row">
+            <div class="mdui-col-sm-9 mdui-col-md-6">
+                <div class="mdui-card mdui-center">
+                    <div class="mdui-card-media">
+                        <img src="https://cdn.jsdelivr.net/gh/Charlie-zzy/imgCDN/awa.png" />
+                        <div class="mdui-card-media-covered">
+                            <div class="mdui-card-primary">
+                                <div class="mdui-card-primary-title">在线歌单下载器</div>
+                                <div class="mdui-card-primary-subtitle">Made by zcmimi & charlie</div>
+                            </div>
+                        </div>
 
-          </div>
-          <div class="mdui-card-actions mdui-toolbar mdui-p-a-2">
-            <button onclick="genlist()" class="mdui-btn mdui-ripple mdui-color-blue mdui-text-color-white mdui-btn-raised mdui-float-left"><i class="mdui-icon material-icons">cached</i>加载</button>
-            <div class="mdui-textfield mdui-p-b-2">
+                    </div>
+                    <div class="mdui-card-actions mdui-toolbar mdui-p-a-2">
+                        <button onclick="genlist()"
+                            class="mdui-btn mdui-ripple mdui-color-blue mdui-text-color-white mdui-btn-raised mdui-float-left"><i
+                                class="mdui-icon material-icons">cached</i>加载</button>
+                        <div class="mdui-textfield mdui-p-b-2">
 
-              <input id='playlistid' class='mdui-textfield-input' placeholder="输入歌单ID">
+                            <input id='playlistid' class='mdui-textfield-input' placeholder="输入歌单ID">
+                        </div>
+                        <select id="playlisttyp" class="mdui-select" mdui-select="{position: 'bottom'}">
+                            <option value="netease">网易云音乐</option>
+                            <option value="tencent">QQ音乐</option>
+                            <option value="xiami">虾米音乐</option>
+                            <option value="kugou">酷狗音乐</option>
+                            <option value="baidu">百度音乐</option>
+                        </select>
+                    </div>
+                    <div class='mdui-card-content'>
+                        <button onclick="download()"
+                            class="mdui-btn mdui-ripple mdui-color-blue mdui-text-color-white mdui-btn-raised">
+                            <i class="mdui-icon material-icons">file_download</i>下载
+                        </button>
+
+                        <label class="mdui-switch mdui-p-a-1">
+                            <input id="download_lrc" type="checkbox" onclick="download_lrc^=1;">
+                            <i class="mdui-switch-icon" mdui-tooltip="{content: '下载歌词'}"></i>
+                        </label>
+
+                        <select id="download_name" class="mdui-select mdui-p-a-1" mdui-select="{position: 'bottom'}">
+                            <option value=1>歌名-歌手</option>
+                            <option value=0>歌手-歌名</option>
+                            <option value=2>仅歌曲名</option>
+                        </select>
+
+                        <a mdui-menu="{target: '#export_menu'}" mdui-tooltip="{content: '导出下载脚本'}"
+                            class="mdui-btn mdui-btn-icon">
+                            <i class="mdui-icon material-icons">file_download</i>
+                        </a>
+                        <ul class="mdui-menu" id="export_menu">
+                            <li class="mdui-menu-item">
+                                <a href="javascript:expt('wget');">wget</a>
+                            </li>
+                            <li class="mdui-menu-item">
+                                <a href="javascript:expt('certutil');">certutil</a>
+                            </li>
+                        </ul>
+                        <button onclick="selectall()" mdui-tooltip="{content: '全选'}" class="mdui-btn mdui-btn-icon">
+                            <i class="mdui-icon material-icons">check_box</i>
+                            </a>
+                    </div>
+                </div>
+                <div class="mdui-card"><audio class="mdui-center mdui-p-a-1" id="player" src="" controls="controls"
+                        autoplay="autoplay"></audio>
+
+                    <div class="mdui-toolbar">
+                        <div class="mdui-center">
+                            <button onclick="pre()" class="mdui-btn mdui-btn-icon"><i
+                                    class='mdui-icon material-icons'>skip_previous</i></button>
+                            <button onclick="order_toggle()" class="mdui-btn mdui-btn-icon" id='order_toggle'><i
+                                    class="mdui-icon material-icons">shuffle</i></button>
+                            <button onclick="nxt()" class="mdui-btn mdui-btn-icon"><i
+                                    class='mdui-icon material-icons'>skip_next</i></button>
+                        </div>
+                    </div>
+                </div>
             </div>
-             <select id="playlisttyp" class="mdui-select" mdui-select="{position: 'bottom'}">
-          <option value="netease">网易云音乐</option>
-          <option value="tencent">QQ音乐</option>
-          <option value="xiami">虾米音乐</option>
-          <option value="kugou">酷狗音乐</option>
-          <option value="baidu">百度音乐</option>
-        </select>
-          </div>
-          </div>
+            <div class="mdui-card mdui-col-sm-9 mdui-col-md-4">
+                <ul id="songlist" class="mdui-list">
+                    <div class="mdui-spinner mdui-center"></div>
+                </ul>
+            </div>
         </div>
-      <div class="mdui-card mdui-col-sm-9 mdui-col-md-4">
-        <ul id="songlist" class="mdui-list">
-          <div class="mdui-spinner mdui-center mdui-valign"></div>
-        </ul>
-      </div>
-      </div>
 
 
-    <!--<div class="mdui-progress" id='progressbar'>-->
-    <!--    <div class="mdui-progress-determinate" id='progressbar_' style="width: 0%;"></div>-->
-    <!--</div>-->
+        <!--<div class="mdui-progress" id='progressbar'>-->
+        <!--    <div class="mdui-progress-determinate" id='progressbar_' style="width: 0%;"></div>-->
+        <!--</div>-->
 
-    <div class="mdui-card">
-      <div class='mdui-card-content mdui-p-a-2'>
-         <button onclick="download()" class="mdui-btn mdui-ripple mdui-color-blue mdui-text-color-white mdui-btn-raised"><i class="mdui-icon material-icons">file_download</i>下载</button>
-            <label class="mdui-checkbox">
-              <input id="download_lrc" type="checkbox" onclick="download_lrc^=1;">
-              <i class="mdui-checkbox-icon"></i>同时下载歌词
-            </label>
 
-        <select id="download_name" class="mdui-select" mdui-select="{position: 'bottom'}">
-          <option value=1>歌名-歌手</option>
-          <option value=0>歌手-歌名</option>
-          <option value=2>仅歌曲名</option>
-        </select>
-
-        <a mdui-menu="{target: '#export_menu'}" mdui-tooltip="{content: '导出下载脚本'}" class="mdui-btn mdui-btn-icon">
-          <i class="mdui-icon material-icons">file_download</i>
-        </a>
-        <ul class="mdui-menu" id="export_menu">
-          <li class="mdui-menu-item">
-            <a href="javascript:expt('wget');">wget</a>
-          </li>
-          <li class="mdui-menu-item">
-            <a href="javascript:expt('certutil');">certutil</a>
-          </li>
-        </ul>
-        <button onclick="selectrev()" mdui-tooltip="{content: '反选'}" class="mdui-btn mdui-btn-icon">
-          <i class="mdui-icon material-icons">exposure</i>
-          </a>
-          <button onclick="pre()" class="mdui-btn mdui-btn-icon"><i class='mdui-icon material-icons'>skip_previous</i></button>
-          <button onclick="order_toggle()" class="mdui-btn mdui-btn-icon" id='order_toggle'><i class="mdui-icon material-icons">shuffle</i></button>
-          <button onclick="nxt()" class="mdui-btn mdui-btn-icon"><i class='mdui-icon material-icons'>skip_next</i></button>
-      </div>
-
-      <audio class="mdui-center" id="player" src="" controls="controls" autoplay="autoplay"></audio>
     </div>
-  </div>
-  </div>
-  <!-- 
+    </div>
+    <!-- 
     <div id='content-right'>
         <ul id="lrclist" class='mdui-list'></ul>
     </div> -->

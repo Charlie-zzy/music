@@ -1,34 +1,40 @@
-.mdui-card{
+.mdui-card {
     margin: 20px;
-    
-}
-.mdui-card-primary{
-  background: rgba(0,0,0,.4);
-}
-#player{
-    width: 100%;
 }
 
-#songlist{
-    height: 80%;
+.mdui-card-primary {
+    background: rgba(0, 0, 0, .4);
 }
 
-#lrclist{
+#player {
+    width: 95%;
+}
+
+.mdui-select {
+    margin-right: 8px;
+    margin-left: 8px;
+}
+
+.mdui-btn {
+    margin-right: 8px;
+}
+
+#lrclist {
     font-size: 20px;
 }
 
-li.on{
+li.on {
     color: #f7a4b9;
     font-weight: bold;
     font-size: 25px;
 }
 
-ul{
+ul {
     transition-duration: 600ms;
 }
 
-a:hover{
+a:hover {
     cursor: pointer;
-    color:#f7a4b9;
+    color: #f7a4b9;
     font-weight: bold;
 }
