@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,22 +14,35 @@
     <link rel="stylesheet" href="css.css" type="text/css">
     <script async src='bundle.js'></script>
 </head>
-<body class="mdui-theme-accent-blue mdui-appbar-with-toolbar padding-top">
-    <div id="content-left">
-       <div id='top_bar' class='mdui-appbar mdui-shadow-2 mdui-appbar-fixed'>
-            <div class='mdui-toolbar mdui-color-white'>
-               <select id="playlisttyp" class="mdui-select">
-                    <option value="netease">网易云音乐</option>
-                    <option value="tencent">QQ音乐</option>
-                    <option value="xiami">虾米音乐</option>
-                    <option value="kugou">酷狗音乐</option>
-                    <option value="baidu">百度音乐</option>
-                </select>
-                <div class='mdui-textfield'>
-                    <input id='playlistid' class='mdui-textfield-input' placeholder='请输入歌单id'>
+
+<body class="mdui-theme-accent-blue">
+    <div class="mdui-container">
+        <div class="mdui-container">
+            <div class="mdui-card">
+                <div class="mdui-card-primary">
+                    <div class="mdui-card-primary-title">在线歌单下载器</div>
+                    <div class="mdui-card-primary-subtitle">Charlie</div>
                 </div>
-                <button class="mdui-btn mdui-color-blue mdui-text-color-white mdui-btn-raised mdui-ripple" onclick="genlist()">加载</button>
+                
+                <div class="mdui-card-content mdui-typo">
+                    <select id="playlisttyp" class="mdui-select">
+                        <option value="netease">网易云</option>
+                        <option value="tencent">QQ音乐</option>
+                        <option value="xiami">虾米音乐</option>
+                        <option value="kugou">酷狗音乐</option>
+                        <option value="baidu">百度音乐</option>
+                    </select>
+                    <div class='mdui-textfield'>
+                        <input id='playlistid' class='mdui-textfield-input' placeholder='请输入歌单id'>
+                    </div>
+                    <button class="mdui-btn mdui-color-blue mdui-text-color-white mdui-btn-raised mdui-ripple"
+                        onclick="genlist()">加载</button>
+                </div>
             </div>
+    </div>
+    <div id="content-left">
+        <div id='top_bar' class='mdui-appbar mdui-shadow-2 mdui-appbar-fixed'>
+
             <div class='mdui-toolbar mdui-color-white'>
                 <select id="download_name" class="mdui-select">
                     <option value=1>歌曲名-歌手</option>
@@ -55,23 +69,27 @@
                 </button>
                 <button onclick="selectrev()" title='反选' class="mdui-btn mdui-btn-icon">
                     <i class="mdui-icon material-icons">exposure</i>
-                </a>
+                    </a>
             </div>
-           <div class='mdui-toolbar mdui-color-white'>
-               <button onclick="pre()" class="mdui-btn mdui-btn-icon"><i class='mdui-icon material-icons'>skip_previous</i></button>
-               <button onclick="order_toggle()" class="mdui-btn mdui-btn-icon" id='order_toggle'><i class="mdui-icon material-icons">shuffle</i></button>
-               <button onclick="nxt()" class="mdui-btn mdui-btn-icon"><i class='mdui-icon material-icons'>skip_next</i></button>
-               <audio id="player" src="" controls="controls" autoplay="autoplay"></audio>
-           </div>
-           <div class="mdui-progress" id='progressbar'>
-               <div class="mdui-progress-determinate" id='progressbar_' style="width: 0%;"></div>
-           </div>
-       </div>
-       <ul id="songlist" class="mdui-list">
-       </ul>
+            <div class='mdui-toolbar mdui-color-white'>
+                <button onclick="pre()" class="mdui-btn mdui-btn-icon"><i
+                        class='mdui-icon material-icons'>skip_previous</i></button>
+                <button onclick="order_toggle()" class="mdui-btn mdui-btn-icon" id='order_toggle'><i
+                        class="mdui-icon material-icons">shuffle</i></button>
+                <button onclick="nxt()" class="mdui-btn mdui-btn-icon"><i
+                        class='mdui-icon material-icons'>skip_next</i></button>
+                <audio id="player" src="" controls="controls" autoplay="autoplay"></audio>
+            </div>
+            <div class="mdui-progress" id='progressbar'>
+                <div class="mdui-progress-determinate" id='progressbar_' style="width: 0%;"></div>
+            </div>
+        </div>
+        <ul id="songlist" class="mdui-list">
+        </ul>
     </div>
     <div id='content-right'>
         <ul id="lrclist" class='mdui-list'></ul>
     </div>
 </body>
+
 </html>

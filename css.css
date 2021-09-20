@@ -1,4 +1,7 @@
-#top_bar{width: 50%;}
+#top_bar{
+    width: 50%;
+}
+
 #content-left{
     width: 50%;
     height: 100%;
@@ -10,8 +13,15 @@
     overflow-x: scroll;
     overflow-y: scroll;
 }
-#player{width: 100%;}
-#songlist{padding-top: 192px;}
+
+#player{
+    width: 100%;
+}
+
+#songlist{
+    padding-top: 192px;
+}
+
 #content-right{
     width: 50%;
     height: 100%;
@@ -23,15 +33,21 @@
     overflow-x: scroll;
     overflow-y: scroll;
 }
+
 #lrclist{
     font-size: 20px;
 }
+
 li.on{
     color: #f7a4b9;
     font-weight: bold;
     font-size: 25px;
 }
-ul{transition-duration: 600ms;}
+
+ul{
+    transition-duration: 600ms;
+}
+
 a:hover{
     cursor: pointer;
     color:#f7a4b9;
