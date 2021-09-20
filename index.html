@@ -24,7 +24,10 @@
                 <div class="mdui-card-primary-subtitle">Charlie</div>
             </div>
 
-            <div class="mdui-card-content mdui-typo">
+            <div class="mdui-card-content mdui-toolbar">
+                <div class='mdui-textfield'>
+                    <input id='playlistid' class='mdui-textfield-input' placeholder='请输入歌单id'>
+                </div>
                 <select id="playlisttyp" class="mdui-select">
                     <option value="netease">网易云</option>
                     <option value="tencent">QQ音乐</option>
@@ -32,12 +35,13 @@
                     <option value="kugou">酷狗音乐</option>
                     <option value="baidu">百度音乐</option>
                 </select>
-                <div class='mdui-textfield'>
-                    <input id='playlistid' class='mdui-textfield-input' placeholder='请输入歌单id'>
-                </div>
-                <button class="mdui-btn mdui-color-blue mdui-text-color-white mdui-btn-raised mdui-ripple"
-                    onclick="genlist()">加载</button>
+
             </div>
+            <button class="mdui-btn mdui-color-blue mdui-text-color-white mdui-btn-raised mdui-ripple"
+            onclick="genlist()">加载</button>
+            <button onclick="download()" class="mdui-btn mdui-btn-icon">
+                <i class="mdui-icon material-icons">file_download</i>
+            </button>
         </div>
         <div class="mdui-card">
             <ul id="songlist" class="mdui-list">
