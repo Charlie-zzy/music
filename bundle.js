@@ -193,10 +193,10 @@ function expt(typ){
     mdui.snackbar({message: '加载中',timeout: 500,position: 'top'});
     expres="";
     for(i in list)if(issl[i])expt_(i,typ);
-    console.clear(),console.log(expres);
+    console.log(expres);
     mdui.snackbar({message: '加载完毕',timeout: 500,position: 'top'});
     mdui.snackbar({
-        message:"请按F12打开控制台(Console)复制,并在终端运行",
+        message:"请从Console中复制,可直接在终端运行",
         timeout:5000,position:'top'
     });
 }
@@ -234,7 +234,8 @@ function genlist(){
         label.appendChild(chkbox),label.appendChild(chkicon);
         li.appendChild(avatar),li.appendChild(a),li.appendChild(label);
         issl[i]=0;
-
+        //if(item1.isEqualNode(item2);)
+        console.log(songlist,li);
         songlist.appendChild(li);
     }
     songlist=songlist.children;

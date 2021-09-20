@@ -37,11 +37,13 @@
                 </select>
 
             </div>
-            <button class="mdui-card-content mdui-btn mdui-color-blue mdui-text-color-white mdui-btn-raised mdui-ripple"
-                onclick="genlist()">加载</button>
-            <button onclick="download()" class="mdui-card-content mdui-btn mdui-btn-icon">
-                <i class="mdui-icon material-icons">file_download</i>
-            </button>
+            <div class="mdui-card-content">
+              <button class="mdui-btn mdui-color-blue mdui-text-color-white mdui-btn-raised mdui-ripple"
+                  onclick="genlist()"><i class="mdui-icon material-icons">cached</i>加载</button>
+              <button class="mdui-btn mdui-color-blue mdui-text-color-white mdui-btn-raised mdui-ripple"
+                  onclick="download()">
+                  <i class="mdui-icon material-icons">file_download</i>下载</button>
+            </div>
         </div>
         <div class="mdui-progress" id='progressbar'>
             <div class="mdui-progress-determinate" id='progressbar_' style="width: 0%;"></div>
