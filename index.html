@@ -38,14 +38,58 @@
 
             </div>
             <button class="mdui-card-content mdui-btn mdui-color-blue mdui-text-color-white mdui-btn-raised mdui-ripple"
-            onclick="genlist()">加载</button>
+                onclick="genlist()">加载</button>
             <button onclick="download()" class="mdui-card-content mdui-btn mdui-btn-icon">
                 <i class="mdui-icon material-icons">file_download</i>
             </button>
         </div>
+        <div class="mdui-progress" id='progressbar'>
+            <div class="mdui-progress-determinate" id='progressbar_' style="width: 0%;"></div>
+        </div>
         <div class="mdui-card">
             <ul id="songlist" class="mdui-list">
             </ul>
+        </div>
+        <div class="mdui-card">
+            <div class='mdui-card-content mdui-toolbar mdui-color-white'>
+                <select id="download_name" class="mdui-select">
+                    <option value=1>歌名-歌手</option>
+                    <option value=0>歌手-歌名</option>
+                    <option value=2>仅歌曲名</option>
+                </select>
+                <label class="mdui-checkbox">
+                    <input id="download_lrc" type="checkbox" checked onclick="download_lrc^=1;">
+                    <i class="mdui-checkbox-icon"></i>下载歌词
+                </label>
+                <a mdui-menu="{target: '#export_menu'}" title="导出下载脚本,推荐">
+                    <i class="mdui-icon material-icons">subdirectory_arrow_right</i>
+                </a>
+                <ul class="mdui-menu" id="export_menu">
+                    <li class="mdui-menu-item">
+                        <a href="javascript:expt('wget');">使用wget</a>
+                    </li>
+                    <li class="mdui-menu-item">
+                        <a href="javascript:expt('certutil');">使用certutil</a>
+                    </li>
+                </ul>
+                <button onclick="download()" title="占用资源,有可能会卡死" class="mdui-btn mdui-btn-icon">
+                    <i class="mdui-icon material-icons">file_download</i>
+                </button>
+                <button onclick="selectrev()" title='反选' class="mdui-btn mdui-btn-icon">
+                    <i class="mdui-icon material-icons">exposure</i>
+                    </a>
+            </div>
+        </div>
+        <div class="mdui-card">
+            <div class='mdui-card-content mdui-color-white'>
+                <button onclick="pre()" class="mdui-btn mdui-btn-icon"><i
+                        class='mdui-icon material-icons'>skip_previous</i></button>
+                <button onclick="order_toggle()" class="mdui-btn mdui-btn-icon" id='order_toggle'><i
+                        class="mdui-icon material-icons">shuffle</i></button>
+                <button onclick="nxt()" class="mdui-btn mdui-btn-icon"><i
+                        class='mdui-icon material-icons'>skip_next</i></button>
+                <audio id="player" src="" controls="controls" autoplay="autoplay"></audio>
+            </div>
         </div>
     </div>
     <!-- <div id="content-left">
@@ -53,9 +97,9 @@
 
             <div class='mdui-toolbar mdui-color-white'>
                 <select id="download_name" class="mdui-select">
-                    <option value=1>歌曲名-歌手</option>
-                    <option value=0>歌手-歌曲名</option>
-                    <option value=2>歌曲名</option>
+                    <option value=1>歌名-歌手</option>
+                    <option value=0>歌手-歌名</option>
+                    <option value=2>仅歌曲名</option>
                 </select>
                 <label class="mdui-checkbox">
                     <input id="download_lrc" type="checkbox" checked onclick="download_lrc^=1;">
