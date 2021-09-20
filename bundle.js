@@ -12,7 +12,7 @@ var audio, now, order_his = [],
     order_typ;
 window.onload = function() {
     now = 0;
-    download_lrc = 1;
+    download_lrc = 0;
     audio = document.getElementById('player');
     audio.addEventListener('ended', function() {
         if (order_typ) rnd();
