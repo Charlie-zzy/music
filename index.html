@@ -17,17 +17,41 @@
 
 <body class="mdui-theme-accent-blue">
     <div class="mdui-container">
+        <div class="mdui-row">
+            <div class="mdui-col-sm-6 mdui-col-md-4">
+                <div class="mdui-card">
+                    <div class="mdui-card-media">
+                        <img src="//cdn.w3cbus.com/mdui.org/docs/assets/docs/img/card.jpg" />
+                        <div class="mdui-card-media-covered mdui-card-media-covered-gradient">
+                            <div class="mdui-card-primary">
+                                <div class="mdui-card-primary-title">在线歌单下载器</div>
+                                <div class="mdui-card-primary-subtitle">Charlie</div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="mdui-card-actions mdui-toolbar">
+                        <div class='mdui-textfield'>
+                            <input id='playlistid' class='mdui-textfield-input' placeholder='输入歌单ID'>
+                        </div>
+                        <button onclick="genlist()" class="mdui-btn mdui-ripple mdui-color-blue mdui-text-color-white mdui-btn-raised"><i class="mdui-icon material-icons">cached</i>加载</button>
+                        <button onclick="download()" class="mdui-btn mdui-ripple mdui-color-blue mdui-text-color-white mdui-btn-raised"><i class="mdui-icon material-icons">file_download</i>下载</button>
+                    </div>
+                </div>
+            </div>
+            <div class="mdui-card">
+            <ul id="songlist" class="mdui-list">
+            </ul>
+        </div>
+        
+        </div>
+
+        <!--<div class="mdui-progress" id='progressbar'>-->
+        <!--    <div class="mdui-progress-determinate" id='progressbar_' style="width: 0%;"></div>-->
+        <!--</div>-->
 
         <div class="mdui-card">
-            <div class="mdui-card-primary">
-                <div class="mdui-card-primary-title">在线歌单下载器</div>
-                <div class="mdui-card-primary-subtitle">Charlie</div>
-            </div>
-
-            <div class="mdui-card-content mdui-toolbar">
-                <div class='mdui-textfield'>
-                    <input id='playlistid' class='mdui-textfield-input' placeholder='输入歌单ID'>
-                </div>
+            <div class='mdui-card-content mdui-toolbar mdui-color-white'>
                 <select id="playlisttyp" class="mdui-select">
                     <option value="netease">网易云</option>
                     <option value="tencent">QQ音乐</option>
@@ -35,25 +59,6 @@
                     <option value="kugou">酷狗音乐</option>
                     <option value="baidu">百度音乐</option>
                 </select>
-
-            </div>
-            <div class="mdui-card-content">
-              <button class="mdui-btn mdui-color-blue mdui-text-color-white mdui-btn-raised mdui-ripple"
-                  onclick="genlist()"><i class="mdui-icon material-icons">cached</i>加载</button>
-              <button class="mdui-btn mdui-color-blue mdui-text-color-white mdui-btn-raised mdui-ripple"
-                  onclick="download()">
-                  <i class="mdui-icon material-icons">file_download</i>下载</button>
-            </div>
-        </div>
-        <div class="mdui-progress" id='progressbar'>
-            <div class="mdui-progress-determinate" id='progressbar_' style="width: 0%;"></div>
-        </div>
-        <div class="mdui-card">
-            <ul id="songlist" class="mdui-list">
-            </ul>
-        </div>
-        <div class="mdui-card">
-            <div class='mdui-card-content mdui-toolbar mdui-color-white'>
                 <select id="download_name" class="mdui-select">
                     <option value=1>歌名-歌手</option>
                     <option value=0>歌手-歌名</option>
@@ -82,6 +87,8 @@
                     </a>
             </div>
         </div>
+        
+
         <div class="mdui-card">
             <div class='mdui-card-content mdui-color-white'>
                 <button onclick="pre()" class="mdui-btn mdui-btn-icon"><i
