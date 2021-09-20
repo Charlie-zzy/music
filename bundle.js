@@ -42,7 +42,7 @@ window.onload = function() {
         }
     };
     audio.onerror = function() {
-        mdui.snackbar({ message: '播放失败,自动下一首', timeout: 500, position: 'top' });
+        mdui.snackbar({ message: '播放失败,自动下一首', position: 'left-bottom' });
         nxt();
     };
 }
@@ -176,9 +176,9 @@ function download_(i) {
 }
 
 function download() {
-    mdui.snackbar({ message: '开始下载', timeout: 500, position: 'top' });
+    mdui.snackbar({ message: '开始下载', position: 'left-bottom' });
     download_(0);
-    mdui.snackbar({ message: '下载完成', timeout: 500, position: 'top' });
+    mdui.snackbar({ message: '下载完成', position: 'left-bottom' });
 }
 
 function expt_(i, typ) {
@@ -206,21 +206,21 @@ function expt_(i, typ) {
 }
 
 function expt(typ) {
-    mdui.snackbar({ message: '加载中', timeout: 500, position: 'top' });
+    mdui.snackbar({ message: '加载中', position: 'left-bottom' });
     expres = "";
     for (i in list)
         if (issl[i]) expt_(i, typ);
     console.clear(), console.log(expres);
-    mdui.snackbar({ message: '加载完毕', timeout: 500, position: 'top' });
+    mdui.snackbar({ message: '加载完毕', position: 'left-bottom' });
     mdui.snackbar({
-        message: "请按F12打开控制台(Console)复制,并在终端运行",
+        message: "请打开控制台复制",
         timeout: 5000,
-        position: 'top'
+        position: 'left-bottom'
     });
 }
 
 function genlist() {
-    mdui.snackbar({ message: '加载中', timeout: 500, position: 'top' });
+    mdui.snackbar({ message: '加载中', position: 'left-bottom' });
     get();
     songlist = document.getElementById('songlist');
     for (i in list) {
@@ -257,11 +257,11 @@ function genlist() {
         label.appendChild(chkbox), label.appendChild(chkicon);
         li.appendChild(avatar), li.appendChild(a), li.appendChild(label);
         issl[i] = 0;
-
+        songlist.innerHTML="";
         songlist.appendChild(li);
     }
     songlist = songlist.children;
-    mdui.snackbar({ message: '加载完毕', timeout: 500, position: 'top' });
+    mdui.snackbar({ message: '加载完毕', position: 'left-bottom' });
 }
 
 function selectrev() {
