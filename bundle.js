@@ -209,12 +209,10 @@ function expt_(i, typ) {
 }
 
 function expt(typ) {
-    mdui.snackbar({ message: '加载中', position: 'left-bottom' });
     expres = "";
     for (i in list)
         if (issl[i]) expt_(i, typ);
     console.clear(), console.log(expres);
-    mdui.snackbar({ message: '加载完毕', position: 'left-bottom' });
     mdui.snackbar({
         message: "请打开控制台复制",
         timeout: 5000,
@@ -223,7 +221,6 @@ function expt(typ) {
 }
 
 function genlist() {
-    mdui.snackbar({ message: '加载中', position: 'left-bottom' });
     get();
     songlist = document.getElementById('songlist');
     songlist.innerHTML = "";
@@ -265,7 +262,6 @@ function genlist() {
         songlist.appendChild(li);
     }
     songlist = songlist.children;
-    mdui.snackbar({ message: '加载完毕', position: 'left-bottom' });
 }
 
 function selectall() {
