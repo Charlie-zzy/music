@@ -149,10 +149,6 @@ function download_(i) {
     console.log((i + 1) + '/' + list.length);
 
     var xhr = new XMLHttpRequest();
-    xhr.onprogress = function(e) {
-        if (e.lengthComputable)
-            document.getElementById("progressbar_").style.width = Math.round(100 * e.loaded / e.total) + '%';
-    };
     xhr.responseType = "blob";
     xhr.open("GET", list[i].url, true);
     xhr.onreadystatechange = function(e) {
@@ -258,7 +254,7 @@ function genlist() {
         a.appendChild(title), a.appendChild(author);
         label.appendChild(chkbox), label.appendChild(chkicon);
         li.appendChild(avatar), li.appendChild(a), li.appendChild(label);
-        issl[i] = true;
+        issl[i] = 1;
         songlist.appendChild(li);
     }
     songlist = songlist.children;
