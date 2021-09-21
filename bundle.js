@@ -87,8 +87,11 @@ function play(i) {
 }
 
 function pre() {
-    if (order_his.length > 1)
-        order_his.pop(), play(order_his.pop());
+    if (order_typ) rnd();
+    else {
+        if (now > 0) play(now - 1);
+        else play(list.length - 1);
+    }
 }
 
 function nxt() {
