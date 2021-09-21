@@ -9,7 +9,7 @@ var lrcTime = [],
     screencenter = window.innerHeight / 2;
 var download_lrc, issl = [];
 var audio, now, order_his = [],
-    order_typ;
+    order_typ, all=true;
 window.onload = function() {
     now = 0;
     download_lrc = 0;
@@ -242,12 +242,13 @@ function genlist() {
         li.setAttribute('data-id', i);
         avatar.classList.add('mdui-list-item-avatar');
         pic.src = list[i].pic;
+        chkbox.checked = true;
         pic.onerror = function() {
             var t = this.src;
             this.src = '';
             this.src = t;
         };
-        a.onclick = function() { play(this.parentElement.getAttribute('data-id')); };
+        a.ondblclick = function() { play(this.parentElement.getAttribute('data-id')); };
         a.classList.add('mdui-list-item-content');
         title.innerText = list[i].title, title.classList.add('mdui-list-item-title');
         author.innerText = list[i].author, author.classList.add('mdui-list-item-text');
@@ -268,8 +269,9 @@ function genlist() {
 }
 
 function selectall() {
+  all^=1;
     for (var i = 0; i < songlist.length; ++i) {
         var x = songlist[i].children[2].children[0];
-        x.checked = issl[i] = 1;
+        x.checked = issl[i] = all;
     }
 }
