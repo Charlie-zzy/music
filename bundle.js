@@ -258,7 +258,7 @@ function genlist() {
         a.appendChild(title), a.appendChild(author);
         label.appendChild(chkbox), label.appendChild(chkicon);
         li.appendChild(avatar), li.appendChild(a), li.appendChild(label);
-        issl[i] = 0;
+        issl[i] = true;
         songlist.appendChild(li);
     }
     songlist = songlist.children;
