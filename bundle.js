@@ -118,22 +118,22 @@ function get() {
     var id = document.getElementById('playlistid').value,
         typ = (netease ? "netease" : "tencent");
     xhr = new XMLHttpRequest();
-    if (id.match(/\D*/) != "") {
-        if (id.match(/(?<=song\??id=)\d*/) != "") {
-            document.getElementById('playlistid').value = id = id.match(/(?<=song\??id=)\d*/);
+    if (id.match(/\D*/) != null) {
+        if (id.match(/(?<=song\??id=)\d+/) != null) {
+            id = id.match(/(?<=song\??id=)\d+/)[0];
             mdui.snackbar({ message: '解析单曲成功喵！~', timeout: 600, position: 'left-bottom' });
-            xhr.open('GET', "https://api.i-meto.com/meting/api?server=" + typ + "&type=playlist&id=" + id, false);
+            xhr.open('GET', "https://api.injahow.cn/meting?server=" + typ + "&type=single&id=" + id, false);
+            xhr.send();console.log(id);
+            list = JSON.parse("[" + xhr.responseText + "]");
+            console.log(list,"https://api.injahow.cn/meting?server=" + typ + "&type=single&id=" + id)
+        }
+        else if (id.match(/(?<=(l|t)(\/|\?id=))\d+/) != null) {
+            id = id.match(/(?<=(l|t)(\/|\?id=))\d+/)[0];
+            mdui.snackbar({ message: '解析歌单成功喵~！', timeout: 600, position: 'left-bottom' });
+            xhr.open('GET', "https://api.injahow.cn/meting?server=" + typ + "&type=playlist&id=" + id, false);
             xhr.send();
             list = JSON.parse(xhr.responseText);
-            console.log(list)
-        }
-        else if (id.match(/(?<=(l|t)(\/|\?id=))\d*/) != "") {
-            document.getElementById('playlistid').value = id = id.match(/(?<=(l|t)(\/|\?id=))\d*/);
-            mdui.snackbar({ message: '解析歌单成功喵~！', timeout: 600, position: 'left-bottom' });
-            xhr.open('GET', "https://api.i-meto.com/meting/api?server=" + typ + "&type=single&id=" + id, false);
-            xhr.send();
-            list = JSON.parse("[" + xhr.responseText + "]");
-            console.log(list)
+            console.log(list,"https://api.injahow.cn/meting?server=" + typ + "&type=playlist&id=" + id)
         }
         else mdui.snackbar({ message: '是无法理解的内容呢qwq', timeout: 600, position: 'left-bottom' });
     } else if (id != "") mdui.snackbar({ message: '请直接粘贴链接喵~', timeout: 600, position: 'left-bottom' });
