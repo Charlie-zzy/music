@@ -122,18 +122,18 @@ function get() {
         if (id.match(/(?<=song\??id=)\d+/) != null) {
             id = id.match(/(?<=song\??id=)\d+/)[0];
             mdui.snackbar({ message: '解析单曲成功喵！~', timeout: 600, position: 'left-bottom' });
-            xhr.open('GET', "https://api.injahow.cn/meting?server=" + typ + "&type=single&id=" + id, false);
-            xhr.send();console.log(id);
-            list = JSON.parse("[" + xhr.responseText + "]");
-            console.log(list,"https://api.injahow.cn/meting?server=" + typ + "&type=single&id=" + id)
+            xhr.open('GET', "https://api.i-meto.com/meting/api?server=" + typ + "&type=song&id=" + id, false);
+            xhr.send(); console.log(id);
+            list = JSON.parse(xhr.responseText);
+            console.log(list, "https://api.i-meto.com/meting/api?server=" + typ + "&type=song&id=" + id)
         }
         else if (id.match(/(?<=(l|t)(\/|\?id=))\d+/) != null) {
             id = id.match(/(?<=(l|t)(\/|\?id=))\d+/)[0];
             mdui.snackbar({ message: '解析歌单成功喵~！', timeout: 600, position: 'left-bottom' });
-            xhr.open('GET', "https://api.injahow.cn/meting?server=" + typ + "&type=playlist&id=" + id, false);
+            xhr.open('GET', "https://api.i-meto.com/meting/api?server=" + typ + "&type=playlist&id=" + id, false);
             xhr.send();
             list = JSON.parse(xhr.responseText);
-            console.log(list,"https://api.injahow.cn/meting?server=" + typ + "&type=playlist&id=" + id)
+            console.log(list, "https://api.i-meto.com/meting/api?server=" + typ + "&type=playlist&id=" + id)
         }
         else mdui.snackbar({ message: '是无法理解的内容呢qwq', timeout: 600, position: 'left-bottom' });
     } else if (id != "") mdui.snackbar({ message: '请直接粘贴链接喵~', timeout: 600, position: 'left-bottom' });
@@ -263,7 +263,7 @@ function genlist() {
         title.innerText = list[i].title, title.classList.add('mdui-list-item-title');
         author.innerText = list[i].author, author.classList.add('mdui-list-item-text');
         label.classList.add('mdui-checkbox');
-        chkbox.onclick = function () { issl[this.parentElement.parentElement.getAttribute('data-id')] ^= 1; };
+        a.onclick = chkbox.onclick = function () { issl[this.parentElement.parentElement.getAttribute('data-id')] ^= 1; };
         chkbox.setAttribute('type', 'checkbox');
         chkicon.classList.add('mdui-checkbox-icon');
 
@@ -287,4 +287,9 @@ function selectall() {
 
 function detect() {
     document.getElementById("load").disabled = (document.getElementById("playlistid").value == "");
+}
+
+function autoclick() {
+    var b = document.getElementById("load");
+    if (event.keyCode == 13 && !b.disabled) b.click();
 }
