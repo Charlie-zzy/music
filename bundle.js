@@ -9,31 +9,34 @@ var lrcTime = [],
     screencenter = window.innerHeight / 2;
 var download_lrc, issl = [];
 var audio, now, order_his = [],
-    order_typ, all=true;
-window.onload = function() {
+    order_typ;
+
+var all = true, album = true, netease = true;
+
+window.onload = function () {
     now = 0;
     download_lrc = 0;
     audio = document.getElementById('player');
-    audio.addEventListener('ended', function() {
+    audio.addEventListener('ended', function () {
         if (order_typ) rnd();
         else nxt();
     });
-    audio.ontimeupdate = function() {
+    audio.ontimeupdate = function () {
         currentTime = audio.currentTime;
         for (var j = currentLine, len = lrcTime.length; j < len; j++) {
             if (currentTime < lrcTime[j + 1] && currentTime > lrcTime[j]) {
                 currentLine = j;
                 lrc_ppxx = screencenter - (currentLine * 48);
                 lrcul.style.transform = "translateY(" + lrc_ppxx + "px)";
-                try { lrcli[currentLine - 1].classList.remove('on') } catch {}
+                try { lrcli[currentLine - 1].classList.remove('on') } catch { }
                 lrcli[currentLine].classList.add('on');
                 break;
             }
         }
     };
-    audio.onseeked = function() {
+    audio.onseeked = function () {
         currentTime = audio.currentTime;
-        try { lrcli[currentLine].classList.remove('on'); } catch {}
+        try { lrcli[currentLine].classList.remove('on'); } catch { }
         for (k = 0, len = lrcTime.length; k < len; ++k) {
             if (currentTime < lrcTime[k + 1] && currentTime < lrcTime[k]) {
                 currentLine = k;
@@ -41,8 +44,8 @@ window.onload = function() {
             }
         }
     };
-    audio.onerror = function() {
-        mdui.snackbar({ message: '播放失败,自动下一首', position: 'left-bottom' });
+    audio.onerror = function () {
+        mdui.snackbar({ message: '播放失败, 自动下一首', timeout: 1000, position: 'left-bottom' });
         nxt();
     };
 }
@@ -115,12 +118,23 @@ function get() {
     var id = document.getElementById('playlistid').value,
         typ = document.getElementById('playlisttyp').value,
         xhr = new XMLHttpRequest();
-    if(true)
-        id=id.match(/(?<=\/|\?id=)\d+/);
-    xhr.open('GET', "https://api.i-meto.com/meting/api?server=" + typ + "&type=playlist&id=" + id, false);
-    xhr.send();
-    list = JSON.parse(xhr.responseText);
-    console.log(list)
+    if (id.match(/\D/) != "")
+    {
+    document.getElementById('playlistid').value = id = id.match(/(?<=\/|\?id=)\d+/);
+    mdui.snackbar({ message: '解析成功喵！~', timeout: 600, position: 'left-bottom' });
+    }
+    if (album) {
+        xhr.open('GET', "https://api.i-meto.com/meting/api?server=" + typ + "&type=playlist&id=" + id, false);
+        xhr.send();
+        list = JSON.parse(xhr.responseText);
+        console.log(list)
+    } else
+    {
+        xhr.open('GET', "https://api.i-meto.com/meting/api?server=" + typ + "&type=single&id=" + id, false);
+        xhr.send();
+        list = JSON.parse("[" + xhr.responseText + "]");
+        console.log(list)
+    }
 }
 
 function saveas(res, filename) {
@@ -153,7 +167,7 @@ function download_(i) {
     var xhr = new XMLHttpRequest();
     xhr.responseType = "blob";
     xhr.open("GET", list[i].url, true);
-    xhr.onreadystatechange = function(e) {
+    xhr.onreadystatechange = function (e) {
         if (this.readyState == 4) {
             if (this.status == 200)
                 saveas(this.response, name + '.mp3');
@@ -167,7 +181,7 @@ function download_(i) {
     var xhr = new XMLHttpRequest();
     xhr.responseType = "blob";
     xhr.open("GET", list[i].lrc, true);
-    xhr.onreadystatechange = function(e) {
+    xhr.onreadystatechange = function (e) {
         if (this.readyState == 4) {
             if (this.status == 200)
                 saveas(this.response, name + '.lrc')
@@ -177,9 +191,8 @@ function download_(i) {
 }
 
 function download() {
-    mdui.snackbar({ message: '开始下载', position: 'left-bottom' });
+    mdui.snackbar({ message: '开始下载', timeout: 600, position: 'left-bottom' });
     download_(0);
-    mdui.snackbar({ message: '下载完成', position: 'left-bottom' });
 }
 
 function expt_(i, typ) {
@@ -238,17 +251,17 @@ function genlist() {
         avatar.classList.add('mdui-list-item-avatar');
         pic.src = list[i].pic;
         chkbox.checked = true;
-        pic.onerror = function() {
+        pic.onerror = function () {
             var t = this.src;
             this.src = '';
             this.src = t;
         };
-        a.ondblclick = function() { play(this.parentElement.getAttribute('data-id')); };
+        a.ondblclick = function () { play(this.parentElement.getAttribute('data-id')); };
         a.classList.add('mdui-list-item-content');
         title.innerText = list[i].title, title.classList.add('mdui-list-item-title');
         author.innerText = list[i].author, author.classList.add('mdui-list-item-text');
         label.classList.add('mdui-checkbox');
-        chkbox.onclick = function() { issl[this.parentElement.parentElement.getAttribute('data-id')] ^= 1; };
+        chkbox.onclick = function () { issl[this.parentElement.parentElement.getAttribute('data-id')] ^= 1; };
         chkbox.setAttribute('type', 'checkbox');
         chkicon.classList.add('mdui-checkbox-icon');
 
@@ -263,7 +276,7 @@ function genlist() {
 }
 
 function selectall() {
-  all^=1;
+    all ^= 1;
     for (var i = 0; i < songlist.length; ++i) {
         var x = songlist[i].children[2].children[0];
         x.checked = issl[i] = all;

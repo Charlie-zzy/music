@@ -41,13 +41,23 @@
                     </div>
                     <div class="mdui-card-content mdui-p-l-3">
                         <label class="mdui-textfield-label">选择音乐服务商</label><select id="playlisttyp" class="mdui-select"
-                            mdui-select="{position: 'bottom'}">
+                            mdui-select>
                             <option value="netease">网易云音乐</option>
                             <option value="tencent">QQ音乐</option>
-                            <option value="kugou">酷狗音乐</option>
                         </select>
+                        <form>
+                            <label class="mdui-radio">
+                              <input type="radio" onclick="album=0;"/>
+                              <i class="mdui-radio-icon"></i>
+                              单曲
+                            </label>
+                            <label class="mdui-radio">
+                              <input type="radio" onclick="album=1;" checked/>
+                              <i class="mdui-radio-icon"></i>
+                              歌单
+                          </form>
                     </div>
-                    <audio class="mdui-center mdui-p-a-1" id="player" src="" controls="controls"
+                    <audio class="mdui-center mdui-p-a-1" id="player" controls="controls"
                         autoplay="autoplay"></audio>
                     <div class="mdui-toolbar">
                         <div class="mdui-center">
