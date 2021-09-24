@@ -116,29 +116,27 @@ function order_toggle() {
 
 function get() {
     var id = document.getElementById('playlistid').value,
-        typ = document.getElementById('playlisttyp').value,
-        xhr = new XMLHttpRequest();
-    if (id.match(/\D*/) != ""){
-         if (id.match(/(?<=song\??id=)\d*/) != "")
-         {
+        typ = (netease ? "netease" : "tencent");
+    xhr = new XMLHttpRequest();
+    if (id.match(/\D*/) != "") {
+        if (id.match(/(?<=song\??id=)\d*/) != "") {
             document.getElementById('playlistid').value = id = id.match(/(?<=song\??id=)\d*/);
             mdui.snackbar({ message: '解析单曲成功喵！~', timeout: 600, position: 'left-bottom' });
             xhr.open('GET', "https://api.i-meto.com/meting/api?server=" + typ + "&type=playlist&id=" + id, false);
             xhr.send();
             list = JSON.parse(xhr.responseText);
             console.log(list)
-         }
-         else if (id.match(/(?<=(l|t)(\/|\?id=))\d*/) != "")
-         {
+        }
+        else if (id.match(/(?<=(l|t)(\/|\?id=))\d*/) != "") {
             document.getElementById('playlistid').value = id = id.match(/(?<=(l|t)(\/|\?id=))\d*/);
             mdui.snackbar({ message: '解析歌单成功喵~！', timeout: 600, position: 'left-bottom' });
             xhr.open('GET', "https://api.i-meto.com/meting/api?server=" + typ + "&type=single&id=" + id, false);
             xhr.send();
             list = JSON.parse("[" + xhr.responseText + "]");
             console.log(list)
-         }
-         else mdui.snackbar({ message: '是无法理解的内容呢qwq', timeout: 600, position: 'left-bottom' });
-    } else if(id != "") mdui.snackbar({ message: '请直接粘贴链接喵~', timeout: 600, position: 'left-bottom' });
+        }
+        else mdui.snackbar({ message: '是无法理解的内容呢qwq', timeout: 600, position: 'left-bottom' });
+    } else if (id != "") mdui.snackbar({ message: '请直接粘贴链接喵~', timeout: 600, position: 'left-bottom' });
 }
 
 function saveas(res, filename) {
