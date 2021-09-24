@@ -115,6 +115,8 @@ function get() {
     var id = document.getElementById('playlistid').value,
         typ = document.getElementById('playlisttyp').value,
         xhr = new XMLHttpRequest();
+    if(true)
+        id=id.match(/(?<=\/|\?id=)\d+/);
     xhr.open('GET', "https://api.i-meto.com/meting/api?server=" + typ + "&type=playlist&id=" + id, false);
     xhr.send();
     list = JSON.parse(xhr.responseText);
