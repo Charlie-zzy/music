@@ -20,8 +20,9 @@
         <div class="mdui-row">
             <div class="mdui-col-md-4">
                 <div class="mdui-card mdui-center">
-                    <div class="mdui-card-media">
-                        <img src="https://c.awa.wiki/api/v3/file/get/10/Angel.jpg?sign=Fum-4rshqglV4yQWVh-wrny-MGebmlSkZJAhucn3Dqo%3D%3A0"/>
+                    <div class="mdui-card-media" name="qwq">
+                        <img
+                            src="https://c.awa.wiki/api/v3/file/get/10/Angel.jpg?sign=Fum-4rshqglV4yQWVh-wrny-MGebmlSkZJAhucn3Dqo%3D%3A0" />
                         <div class="mdui-card-media-covered">
                             <div class="mdui-card-primary">
                                 <div class="mdui-card-primary-title">在线歌曲下载器</div>
@@ -29,36 +30,31 @@
                                 <div class="mdui-card-primary-subtitle">Original author: zcmimi</div>
                             </div>
                         </div>
-
                     </div>
                     <div class="mdui-card-actions mdui-toolbar">
                         <div class="mdui-textfield mdui-m-b-1 mdui-col-sm-12 mdui-col-md-9">
-                            <input id='playlistid' class='mdui-textfield-input' placeholder="输入歌单ID">
+                            <input id='playlistid' class='mdui-textfield-input' placeholder="粘贴链接或ID"
+                                oninput="detect()">
                         </div>
-                        <button onclick="genlist()"
-                            class="mdui-btn mdui-ripple mdui-color-blue mdui-text-color-white mdui-btn-raised mdui-float-right"><i
-                                class="mdui-icon material-icons">cached</i>载入</button>
+                        <button id="load" onclick="genlist()"
+                            class="mdui-btn mdui-ripple mdui-color-blue mdui-text-color-white mdui-btn-raised mdui-float-right"
+                            disabled><i class="mdui-icon material-icons">cached</i>载入</button>
                     </div>
                     <div class="mdui-card-content mdui-p-l-3">
-                        <label class="mdui-textfield-label">选择音乐服务商</label><select id="playlisttyp" class="mdui-select"
-                            mdui-select>
-                            <option value="netease">网易云音乐</option>
-                            <option value="tencent">QQ音乐</option>
-                        </select>
+                        <label class="mdui-textfield-label">选择服务商</label>
                         <form>
                             <label class="mdui-radio">
-                              <input type="radio" onclick="album=0;"/>
-                              <i class="mdui-radio-icon"></i>
-                              单曲
+                                <input type="radio" name="type" onclick="netease=1;" />
+                                <i class="mdui-radio-icon"></i>
+                                网易云音乐
                             </label>
                             <label class="mdui-radio">
-                              <input type="radio" onclick="album=1;" checked/>
-                              <i class="mdui-radio-icon"></i>
-                              歌单
-                          </form>
+                                <input type="radio" name="type" onclick="netease=0;" checked />
+                                <i class="mdui-radio-icon"></i>
+                                QQ音乐
+                        </form>
                     </div>
-                    <audio class="mdui-center mdui-p-a-1" id="player" controls="controls"
-                        autoplay="autoplay"></audio>
+                    <audio class="mdui-center mdui-p-a-1" id="player" controls="controls" autoplay="autoplay"></audio>
                     <div class="mdui-toolbar">
                         <div class="mdui-center">
                             <button onclick="pre()" class="mdui-btn mdui-btn-icon"><i
@@ -71,10 +67,10 @@
                                 class="mdui-btn mdui-btn-icon">
                                 <i class="mdui-icon material-icons">file_download</i></button>
                             <ul class="mdui-menu" id="export_menu">
-                                <li class="mdui-menu-item">
+                                <li class="mdui-menu-item mdui-ripple">
                                     <a href="javascript:expt('wget');">wget</a>
                                 </li>
-                                <li class="mdui-menu-item">
+                                <li class="mdui-menu-item mdui-ripple">
                                     <a href="javascript:expt('certutil');">certutil</a>
                                 </li>
                             </ul>
@@ -96,7 +92,7 @@
                     <qwq class="mdui-p-l-2"></qwq><label class="mdui-checkbox mdui-p-l-3">
                         <input onclick="download_lrc^=1;" type="checkbox" />
                         <i class="mdui-checkbox-icon"></i>
-                        包括 lrc 歌词
+                        下载歌词
                     </label>
                     <button onclick="download()"
                         class="mdui-btn mdui-ripple mdui-color-blue mdui-text-color-white mdui-btn-raised mdui-float-right">

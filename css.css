@@ -1,25 +1,17 @@
 .mdui-card {
-    margin: 20px;
+    margin: 16px;
     overflow: visible;
 }
-
-#player {
+.mdui-radio {
+  padding-left: 24px;
+  margin-left: 18px;
+}
+audio {
     width: 95%;
 }
+
 .mdui-card-primary {
-    background: rgba(0, 0, 0, 0.4s);
-}
-.mdui-select {
-    margin-right: 8px;
-    margin-left: 8px;
-}
-
-.mdui-btn {
-    margin-right: 8px;
-}
-
-#lrclist {
-    font-size: 20px;
+    background: rgba(0, 0, 0, 0.4);
 }
 
 li.on {
@@ -34,6 +26,6 @@ ul {
 
 a:hover {
     cursor: pointer;
-    color: #f7a4b9;
+    color: #3FA4F5;
     font-weight: bold;
 }
