@@ -119,7 +119,7 @@ function get() {
         typ = (netease ? "netease" : "tencent");
     xhr = new XMLHttpRequest();
     mdui.snackbar({ message: '解析ing~', timeout: 600, position: 'left-bottom' });
-    if (id.match(/\D*/) != null || true) {
+    if (id.match(/\D*/) != null) {
         if (id.match(/(?<=song\??id=)\d+/) != null) {
             id = id.match(/(?<=song\??id=)\d+/)[0];
             mdui.snackbar({ message: '解析单曲成功喵！~', timeout: 600, position: 'left-bottom' });
