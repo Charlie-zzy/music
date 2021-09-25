@@ -118,6 +118,7 @@ function get() {
     var id = document.getElementById('playlistid').value,
         typ = (netease ? "netease" : "tencent");
     xhr = new XMLHttpRequest();
+    mdui.snackbar({ message: '解析ing~', timeout: 600, position: 'left-bottom' });
     if (id.match(/\D*/) != null || true) {
         if (id.match(/(?<=song\??id=)\d+/) != null) {
             id = id.match(/(?<=song\??id=)\d+/)[0];
