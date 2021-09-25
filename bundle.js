@@ -203,14 +203,12 @@ function expt_(i, typ) {
         val = document.getElementById('download_name').value;
     if (val == 1) name = list[i].title + "-" + list[i].author;
     else if (val == 2) name = list[i].title;
-
     var tmp = name,
         r = "/\\*?<>|?:";
     name = '';
     for (var j = 0; j < tmp.length; ++j)
         if (r.indexOf(tmp[j]) != -1) name += '_';
         else name += tmp[j];
-
     if (typ == 'wget')
         expres += "wget \"" + list[i].url + "\" -O \"" + name + ".mp3\"\n";
     else if (typ == 'certutil')
@@ -248,7 +246,6 @@ function genlist() {
             label = document.createElement('label'),
             chkbox = document.createElement('input'),
             chkicon = document.createElement('i');
-
         li.classList.add('mdui-list-item');
         li.setAttribute('data-id', i);
         avatar.classList.add('mdui-list-item-avatar');
