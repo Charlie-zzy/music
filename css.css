@@ -29,3 +29,7 @@ a:hover {
     color: #3FA4F5;
     font-weight: bold;
 }
+
+#playlistid {
+    cursor: text;
+}
